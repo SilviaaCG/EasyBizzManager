@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "689657088526",
+    "firebase_url": "https://easybizz-manager-d5e0a-default-rtdb.firebaseio.com",
+    "project_id": "easybizz-manager-d5e0a",
+    "storage_bucket": "easybizz-manager-d5e0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:689657088526:android:a7e177aca54815a5678a5f",
+        "android_client_info": {
+          "package_name": "com.silvia.easybizzmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "689657088526-9apj68s379qvmgamsv5obmkvajfom1dk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWQEzesXuIqgiaswYi6_Jy1Sd3-Bxae0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "689657088526-9apj68s379qvmgamsv5obmkvajfom1dk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:689657088526:android:b1fdfe9d350d4eb8678a5f",
+        "android_client_info": {
+          "package_name": "com.silvia.easybizzmanager3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "689657088526-q4abkq25tg0e97fbtf9qqejm16m5vt1h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.silvia.easybizzmanager3",
+            "certificate_hash": "d9e25a8403b3e5151da58cf4022ae064998de064"
+          }
+        },
+        {
+          "client_id": "689657088526-9apj68s379qvmgamsv5obmkvajfom1dk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWQEzesXuIqgiaswYi6_Jy1Sd3-Bxae0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "689657088526-9apj68s379qvmgamsv5obmkvajfom1dk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

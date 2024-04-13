@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.silvia.easybizzmanager3.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_clientes"
+        android:name="com.silvia.easybizzmanager3.ui.client.ClientFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_client">
+        <action
+            android:id="@+id/action_nav_clientes_to_infoClientFragment"
+            app:destination="@id/infoClientFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.silvia.easybizzmanager3.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow"/>
+    <fragment
+        android:id="@+id/infoClientFragment"
+        android:name="com.silvia.easybizzmanager3.ui.client.InfoClientFragment"
+        android:label="fragment_info_client"
+        tools:layout="@layout/fragment_info_client">
+        <action
+            android:id="@+id/action_infoClientFragment_to_nav_clientes"
+            app:destination="@id/nav_clientes"/>
+    </fragment>
+</navigation>

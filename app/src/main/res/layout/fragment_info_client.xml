@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.client.InfoClientFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            >
+
+            <ImageView
+                android:id="@+id/clientImageView"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars"
+                android:clickable="true"/>
+
+            <LinearLayout
+                android:id="@+id/labelNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/clientImageView"
+                >
+
+                <TextView
+                    android:id="@+id/clientNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre"
+                    android:textSize="16dp"
+                    android:padding="16dp"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/abeezee"/>
+
+                <EditText
+                    android:id="@+id/clientNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:fontFamily="@font/abeezee"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/labelApellidos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/labelNombre"
+                >
+
+                <TextView
+                    android:id="@+id/clientApellidosTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Apellidos"
+                    android:textSize="16dp"
+                    android:padding="16dp"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/abeezee"/>
+
+                <EditText
+                    android:id="@+id/clientApellidosEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:fontFamily="@font/abeezee"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/labelNumero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/labelApellidos"
+                >
+                <TextView
+                    android:id="@+id/clientNumeroTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Número"
+                    android:textSize="16dp"
+                    android:padding="16dp"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/abeezee"/>
+                <Spinner
+                    android:id="@+id/fixNumeroSpinner"
+                    android:layout_width="89dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/abeezee" />
+
+                <EditText
+                    android:id="@+id/clientNumeroEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:fontFamily="@font/abeezee"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/labelDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/labelNumero"
+                >
+
+                <TextView
+                    android:id="@+id/clientDireccionTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dirección"
+                    android:textSize="16dp"
+                    android:padding="16dp"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/abeezee"/>
+
+                <EditText
+                    android:id="@+id/clientDireccionEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:fontFamily="@font/abeezee"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/labelCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/labelDireccion"
+                >
+
+                <TextView
+                    android:id="@+id/clientCorreoTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E-mail"
+                    android:textSize="16dp"
+                    android:padding="16dp"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/abeezee"/>
+
+                <EditText
+                    android:id="@+id/clientCorreoEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:fontFamily="@font/abeezee"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/favoritoButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/outline_auto_awesome_24"/>
+            <LinearLayout
+                android:id="@+id/layoutClientFacturas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/labelCorreo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                >
+                <TextView
+                    android:id="@+id/clientFacturasTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Facturas"
+                    android:fontFamily="@font/abeezee"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/clientFacturasRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    />
+            </LinearLayout>
+            <Button
+                android:id="@+id/guardarButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Guardar"
+                app:layout_constraintTop_toBottomOf="@id/labelCorreo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:padding="16dp"
+                android:layout_margin="80dp"
+                android:fontFamily="@font/abeezee"
+                android:visibility="gone"/>
+            <LinearLayout
+                android:id="@+id/layoutClientInfoOpciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal"
+                android:background="@drawable/color_transparente">
+                <Button
+                    android:id="@+id/editarClientButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:text="Editar"
+                    android:drawableStart="@drawable/baseline_edit_24"
+                    android:drawablePadding="5dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:fontFamily="@font/abeezee"/>
+
+                <Button
+                    android:id="@+id/eliminarClientButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:text="Eliminar"
+                    android:drawableStart="@drawable/baseline_block_24"
+                    android:drawablePadding="5dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:fontFamily="@font/abeezee"/>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--
+val image:Uri, val nombre:String, val apellidos:String, val number:NumberContact, val direccion:String, val correo:String, val favorito:Boolean)
+
+data class NumberContact(val prefix:Prefix, val number:Int) {
+
+}-->
+
+</androidx.core.widget.NestedScrollView>
