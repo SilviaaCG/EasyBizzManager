@@ -33,17 +33,15 @@
             android:textAlignment="center"
             android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/searchClientEditText"
+
+        <SearchView
+            android:id="@+id/buscadorClientes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/baseline_search_24"
             android:drawablePadding="10dp"
-            android:ems="15"
             android:fontFamily="@font/abeezee"
-            android:inputType="text"
-            android:padding="16dp"
-            android:text="Buscar" />
+            android:text="Buscar"
+            />
 
         <TextView
             android:id="@+id/favClientsTextView"

@@ -11,16 +11,37 @@
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             >
-
-            <ImageView
-                android:id="@+id/clientImageView"
-                android:layout_width="match_parent"
-                android:layout_height="170dp"
+            <RelativeLayout
+                android:id="@+id/layoutImagen"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_centerInParent="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/avatars"
-                android:clickable="true"/>
+                >
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/clientImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/imagen_perfil"
+                    android:onClick="showImage"
+                    android:padding="3dp"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/ic_persona" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab_agregar_foto"
+                    style="@style/FabStyle"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/labelNombre"
@@ -29,7 +50,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/clientImageView"
+                app:layout_constraintTop_toBottomOf="@id/layoutImagen"
                 >
 
                 <TextView
