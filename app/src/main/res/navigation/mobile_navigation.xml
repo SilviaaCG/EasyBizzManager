@@ -22,10 +22,14 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.silvia.easybizzmanager3.ui.slideshow.SlideshowFragment"
+        android:id="@+id/nav_facturas"
+        android:name="com.silvia.easybizzmanager3.ui.slideshow.FacturaFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow"/>
+        tools:layout="@layout/fragment_factura">
+        <action
+            android:id="@+id/action_nav_facturas_to_infoFacturaFragment"
+            app:destination="@id/infoFacturaFragment" />
+    </fragment>
     <fragment
         android:id="@+id/infoClientFragment"
         android:name="com.silvia.easybizzmanager3.ui.client.InfoClientFragment"
@@ -34,5 +38,20 @@
         <action
             android:id="@+id/action_infoClientFragment_to_nav_clientes"
             app:destination="@id/nav_clientes"/>
+        <action
+            android:id="@+id/action_infoClientFragment_to_infoFacturaFragment"
+            app:destination="@id/infoFacturaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFacturaFragment"
+        android:name="com.silvia.easybizzmanager3.ui.slideshow.InfoFacturaFragment"
+        android:label="fragment_info_factura"
+        tools:layout="@layout/fragment_info_factura" >
+        <action
+            android:id="@+id/action_infoFacturaFragment_to_nav_facturas"
+            app:destination="@id/nav_facturas" />
+        <action
+            android:id="@+id/action_infoFacturaFragment_to_infoClientFragment"
+            app:destination="@id/infoClientFragment" />
     </fragment>
 </navigation>

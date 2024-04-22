@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.slideshow.InfoFacturaFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/vistasFacturaInfoButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="16dp">
+            <Button
+                android:id="@+id/vistaDatosFacturaButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/purple_200"
+                android:layout_weight="1"
+                android:fontFamily="@font/abeezee"
+                android:text="@string/factura_digital"
+                style="?android:attr/buttonBarButtonStyle" />
+            <Button
+                android:id="@+id/vistaPdfFacturaButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/transparente_gris"
+                android:layout_weight="1"
+                android:fontFamily="@font/abeezee"
+                android:text="@string/factura_pdf"
+                style="?android:attr/buttonBarButtonStyle" />
+        </LinearLayout>
+        <!-- DATOS DE FACTURA -->
+    <LinearLayout
+        android:id="@+id/labelDatosFactura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutImagen"
+        android:layout_margin="10dp"
+        >
+        <!-- NÚMERO DE FACTURA - val numeroFactura: String-->
+        <TextView
+            android:id="@+id/numeroFacturaTextView"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/n_mero_de_factura_12323"
+            android:fontFamily="@font/abeezee"/>
+        <!--FECHA DE EMISIÓN - val fechaEmision: String-->
+        <TextView
+            android:id="@+id/fechaEmisionFacturaTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/fecha"
+            android:fontFamily="@font/abeezee"/>
+    </LinearLayout>
+
+        <!-- DATOS DE VENDEDOR - val vendedor: String -->
+        <TextView
+            android:id="@+id/datosVendedorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/datos_de_vendedor"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            />
+        <LinearLayout
+            android:id="@+id/labelDatosVendedor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutImagen"
+            android:layout_margin="10dp"
+            >
+
+            <TextView
+                android:id="@+id/vendedorSelectTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vendedor"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:textAlignment="center"
+                android:fontFamily="@font/abeezee"/>
+            <Spinner
+                android:id="@+id/selectorVendedorSpinner"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                />
+            <Button
+                android:id="@+id/agregarVendedorNuevoButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@android:drawable/ic_menu_add"/>
+        </LinearLayout>
+
+        <!-- DATOS DE CLIENTE - val comprador: Cliente -->
+        <TextView
+            android:id="@+id/datosClienteTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/datos_de_cliente"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            />
+        <LinearLayout
+            android:id="@+id/labelDatosCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutImagen"
+            android:layout_margin="10dp"
+            >
+
+            <TextView
+                android:id="@+id/clienteSelectTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cliente"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:textAlignment="center"
+                android:fontFamily="@font/abeezee"/>
+            <Spinner
+                android:id="@+id/selectorClienteSpinner"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                />
+            <Button
+                android:id="@+id/agregarClienteNuevoButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@android:drawable/ic_menu_add"/>
+        </LinearLayout>
+        <!-- DATOS DE PAGO -->
+
+        <TextView
+            android:id="@+id/datosPagoTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/datos_de_pago"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            />
+        <!-- IMPUESTOS - val impuestos: Double,-->
+    <LinearLayout
+        android:id="@+id/labelImpuestosPago"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutImagen"
+        android:layout_margin="10dp"
+        >
+        <TextView
+            android:id="@+id/impuestosFacturaTextView"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/impuestos"
+            android:textSize="16sp"
+            android:padding="16dp"
+            android:textAlignment="center"
+            android:fontFamily="@font/abeezee"/>
+        <EditText
+            android:id="@+id/impuestosFacturaEditText"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:fontFamily="@font/abeezee"/>
+        <TextView
+            android:id="@+id/porcentajeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/porcentaje_signo"
+            android:textSize="16sp"
+            android:padding="16dp"
+            android:textAlignment="center"
+            android:fontFamily="@font/abeezee"/>
+    </LinearLayout>
+
+        <!--IMPORTE TOTAL - val importeTotal: Double-->
+        <LinearLayout
+            android:id="@+id/labelImporteTotalPago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutImagen"
+            android:layout_margin="10dp"
+            >
+            <TextView
+                android:id="@+id/importeTotalFacturaTextView"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/importe_total"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:textAlignment="center"
+                android:fontFamily="@font/abeezee"/>
+            <EditText
+                android:id="@+id/importeTotalFacturaEditText"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:fontFamily="@font/abeezee"/>
+            <TextView
+                android:id="@+id/signoDineroTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="€"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:textAlignment="center"
+                android:fontFamily="@font/abeezee"/>
+        </LinearLayout>
+        <!-- METODO DE PAGO - val metodoPago: String?-->
+        <LinearLayout
+            android:id="@+id/labelMetodoPagoTotalPago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutImagen"
+            android:layout_margin="10dp"
+            >
+            <TextView
+                android:id="@+id/metodoPagoFacturaTextView"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/importe_total"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:textAlignment="center"
+                android:fontFamily="@font/abeezee"/>
+            <EditText
+                android:id="@+id/metodoPagoFacturaEditText"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:fontFamily="@font/abeezee"/>
+            <ImageView
+                android:id="@+id/metodoPagoImageView"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_dinero_dolar"
+                />
+        </LinearLayout>
+        <!-- DESCUENTO - val descuento: Double?-->
+        <LinearLayout
+            android:id="@+id/labelDescuentoPago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutImagen"
+            android:layout_margin="10dp"
+            >
+            <TextView
+                android:id="@+id/descuentoFacturaTextView"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/descuento"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:textAlignment="center"
+                android:fontFamily="@font/abeezee"/>
+            <EditText
+                android:id="@+id/descuentoFacturaEditText"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:fontFamily="@font/abeezee"/>
+            <TextView
+                android:id="@+id/porcentajeDescuentoTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/porcentaje_signo"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:textAlignment="center"
+                android:fontFamily="@font/abeezee"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/otrosDatosTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/otros_datos"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            />
+        <!-- INFORMACIÓN ADICIONAL - val informacionAdicional: String? -->
+        <LinearLayout
+            android:id="@+id/labelInfoAdicionalTotalPago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="10dp"
+            >
+            <TextView
+                android:id="@+id/infoAdicionalFacturaTextView"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Información adicional"
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:textAlignment="center"
+                android:fontFamily="@font/abeezee"/>
+            <EditText
+                android:id="@+id/infoAdicionalFacturaEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:fontFamily="@font/abeezee"
+                />
+        </LinearLayout>
+
+        <!-- BOTON GUARDAR -->
+        <Button
+            android:id="@+id/guardarButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/guardar"
+            android:padding="16dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="100dp"
+            android:fontFamily="@font/abeezee"
+            android:visibility="gone"/>
+
+        <!-- BOTONES OPCIONES -->
+        <LinearLayout
+            android:id="@+id/layoutFacturaInfoOpciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal"
+            android:background="@drawable/color_transparente">
+            <Button
+                android:id="@+id/editarFacturaButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:text="@string/editar"
+                android:drawableStart="@drawable/baseline_edit_24"
+                android:drawablePadding="5dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:fontFamily="@font/abeezee"/>
+
+            <Button
+                android:id="@+id/eliminarClientButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:text="@string/eliminar"
+                android:drawableStart="@drawable/baseline_block_24"
+                android:drawablePadding="5dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:fontFamily="@font/abeezee"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>
+<!--
+
+data class Factura(
+    val numeroFactura: String,
+    val fechaEmision: String,
+    val vendedor: String,
+    val comprador: Client,
+    val direccionVendedor: String?,
+    val direccionComprador: String?,
+    val importeTotal: Double,
+    val impuestos: Double,
+    val metodoPago: String?,
+    val condicionesPago: String?,
+    val informacionAdicional: String?,
+    val productos: List<Producto>?,
+    val servicios:List<Servicio>?,
+    val descuento: Double?
+){
+-->

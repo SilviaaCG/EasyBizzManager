@@ -266,13 +266,6 @@
                     android:gravity="center"
                     android:fontFamily="@font/abeezee"/>
             </LinearLayout>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-<!--
-val image:Uri, val nombre:String, val apellidos:String, val number:NumberContact, val direccion:String, val correo:String, val favorito:Boolean)
-
-data class NumberContact(val prefix:Prefix, val number:Int) {
-
-}-->
 
 </androidx.core.widget.NestedScrollView>

@@ -2,5 +2,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <solid android:color="#80CCCCCC" /> <!-- Define el color de fondo con transparencia -->
-    <corners android:radius="8dp" /> <!-- Opcional: redondea las esquinas del botón -->
+    <corners android:radius="50dp" /> <!-- Opcional: redondea las esquinas del botón -->
 </shape>
