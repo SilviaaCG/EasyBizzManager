@@ -4,43 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.slideshow.FacturaFragment">
-
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/agregarFacturaButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:clickable="true"
-        android:padding="16dp"
-        android:src="@android:drawable/ic_menu_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout" />
-
+    tools:context=".ui.factura.FacturaFragment"
+    android:background="@color/blanco_1">
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/clientsTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/abeezee"
-            android:padding="16dp"
-            android:text="@string/factura_titulo_fragment"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-
         <SearchView
-            android:id="@+id/buscadorClientes"
+            android:id="@+id/buscador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
+            android:layout_margin="10dp"
             android:fontFamily="@font/abeezee"
-            android:text="@string/buscar"
+            android:text="Buscar"
+            android:background="@drawable/fondo_redondo_blanco"
+            android:searchIcon="@drawable/buscar_24"
             />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -53,6 +34,19 @@
             tools:listitem="@layout/item_factura_list">
         </androidx.recyclerview.widget.RecyclerView>
 
+
+
     </LinearLayout>
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/agregarFacturaButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fab_colorNormal="@color/azul_cian"
+        app:fab_icon="@drawable/add_factura_blanco"
+        app:fab_addButtonColorPressed="@color/azul_oscuro"
+        android:layout_margin="16dp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

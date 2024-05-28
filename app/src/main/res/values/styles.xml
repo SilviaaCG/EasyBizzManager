@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="FabStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -10,4 +9,12 @@
         <item name="tint">@color/white</item>
         <item name="useCompatPadding">true</item>
     </style>
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/azul_cian</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/logo</item>
+        <item name="windowSplashScreenAnimationDuration">300</item>
+        <item name="postSplashScreenTheme">@style/Theme.EasyBizzManager3</item>
+    </style>
+
+
 </resources>

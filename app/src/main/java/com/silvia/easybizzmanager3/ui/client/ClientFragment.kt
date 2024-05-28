@@ -6,17 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.activity.addCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.navigation.NavigationView
 import com.silvia.easybizzmanager3.R
+import com.silvia.easybizzmanager3.ajustes
 import com.silvia.easybizzmanager3.databinding.FragmentClientBinding
 import com.silvia.easybizzmanager3.models.Client
-import com.silvia.easybizzmanager3.models.NumberContact
-
+import com.silvia.easybizzmanager3.models.Factura
+import com.silvia.easybizzmanager3.ui.factura.FacturaViewModel
 import kotlinx.coroutines.launch
 import java.util.Locale
 
@@ -25,7 +28,6 @@ class ClientFragment : Fragment() {
 
     private var _binding: FragmentClientBinding? = null
     private val clientViewModel: ClientViewModel by activityViewModels()
-
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -33,13 +35,32 @@ class ClientFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
+        ajustes().seleccionarFragment(activity as AppCompatActivity,R.id.nav_clientes)
+        ajustes().insertarTitulo( "Clientes",requireActivity() as AppCompatActivity)
+        ajustes().mostrarAppBar(requireActivity() as AppCompatActivity)
         _binding = FragmentClientBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+        volverButton()
         initRecyclerView()
-        lifecycleScope.launch {
+        initBuscadorClientes()
 
+
+
+        binding.agregarClienteButton.setOnClickListener{
+            agregarCliente()
+        }
+
+        return root
+    }
+
+    private fun volverButton() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            findNavController().navigate(R.id.action_nav_clientes_to_nav_home)
+        }
+    }
+
+    private fun initBuscadorClientes() {
+        lifecycleScope.launch {
             binding.buscadorClientes.setOnQueryTextListener(object :
                 SearchView.OnQueryTextListener {
                 override  fun onQueryTextSubmit(query: String): Boolean {
@@ -56,12 +77,6 @@ class ClientFragment : Fragment() {
                 }
             })
         }
-
-        binding.floatingActionButton.setOnClickListener{
-            agregarCliente()
-        }
-
-        return root
     }
 
     private fun volverListaClientes() {
@@ -80,7 +95,7 @@ class ClientFragment : Fragment() {
         val listaFiltrada = mutableListOf<Client>()
         clientViewModel.clientList.observe(viewLifecycleOwner) { listaClientes ->
             for (cliente in listaClientes) {
-                if (cliente.nombre.lowercase()?.contains(texto.lowercase(Locale.getDefault())) == true) {
+                if (cliente.nombre.trim().lowercase()?.contains(texto.lowercase(Locale.getDefault())) == true || cliente.apellidos.trim().lowercase()?.contains(texto.lowercase(Locale.getDefault())) == true) {
                     listaFiltrada.add(cliente)
                 }
             }
@@ -95,32 +110,27 @@ class ClientFragment : Fragment() {
 
     private fun initRecyclerView() {
         val manager = LinearLayoutManager(activity)
-        val decoration = DividerItemDecoration(activity,manager.orientation)
-        clientViewModel.setClienteActual(Client("0"," ","Nombre","Apellidos",
-            NumberContact("+34",62354334),"Dirección","correo@gmail.com",false))
-        clientViewModel.initAdapter({client -> infoClienteClick(client)},{position -> onCallClick(position)})
+        clientViewModel.initAdapter { client -> infoClienteClick(client) }
         clientViewModel.clientAdapter.observe(viewLifecycleOwner){
             binding.clientsRecyclerView.adapter = it
+
         }
+
         binding.clientsRecyclerView.layoutManager = manager
-        binding.clientsRecyclerView.addItemDecoration(decoration)
     }
-    // Botones de los items del RecyclerView
 
-    private fun onCallClick(position: Int){
 
-    }
     private fun infoClienteClick(client: Client){
         clientViewModel.setClienteActual(client)
-        clientViewModel.setEditable(false)
+        clientViewModel.insertarAccion(2)
         findNavController().navigate(R.id.action_nav_clientes_to_infoClientFragment)
     }
 
-    // Boton agregar cliente
+
     private fun agregarCliente(){
-        clientViewModel.setEditable(true)
+        clientViewModel.insertarAccion(1)
         clientViewModel.setClienteActual(Client())
-        findNavController().navigate(R.id.action_nav_clientes_to_infoClientFragment)
+        findNavController().navigate(R.id.action_nav_clientes_to_editarClientFragment)
     }
 
     override fun onDestroyView() {

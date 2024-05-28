@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/fondo_redondo_blanco2">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/fondo_redondo_blanco"
+        android:hint="@string/nombre"
+        android:textColorHint="@color/azul_cian"
+        app:boxStrokeColor="@color/azul_cian">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nombreEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/fondo_redondo_blanco"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/fondo_redondo_blanco"
+        android:hint="@string/apellidos"
+        android:textColorHint="@color/azul_cian"
+        app:boxStrokeColor="@color/azul_cian">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/apellidosEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/fondo_redondo_blanco"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/fondo_redondo_blanco"
+            android:hint="@string/sufijo"
+            android:textColorHint="@color/azul_cian"
+            app:boxStrokeColor="@color/azul_cian">
+
+            <Spinner
+                android:id="@+id/fixSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/fondo_redondo_blanco"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:entries="@array/sufijos"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/fondo_redondo_blanco"
+            android:hint="@string/numero"
+            android:textColorHint="@color/azul_cian"
+            app:boxStrokeColor="@color/azul_cian">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/numeroContactoEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/fondo_redondo_blanco"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/fondo_redondo_blanco"
+        android:hint="@string/direccion"
+        android:textColorHint="@color/azul_cian"
+        app:boxStrokeColor="@color/azul_cian">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/direccionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/fondo_redondo_blanco"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/fondo_redondo_blanco"
+        android:hint="@string/correo_electronico"
+        android:textColorHint="@color/azul_cian"
+        app:boxStrokeColor="@color/azul_cian">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/correoEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/fondo_redondo_blanco"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</LinearLayout>

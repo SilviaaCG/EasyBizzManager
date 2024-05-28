@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.client.EditarClientFragment"
+    android:orientation="vertical"
+    android:background="@color/blanco_1">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guardarButton"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/fondo_redondo_blanco"
+                android:gravity="center"
+                android:padding="25dp">
+
+                <RelativeLayout
+                    android:id="@+id/layoutImagen"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center_horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/clientImageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_gravity="center"
+                        android:layout_margin="16dp"
+                        android:background="@drawable/imagen_perfil"
+                        android:padding="3dp"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/cliente_44" />
+
+                    <com.getbase.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fab_agregar_foto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        app:fab_addButtonColorPressed="@color/azul_oscuro"
+                        app:fab_colorNormal="@color/azul_cian"
+                        app:fab_icon="@drawable/captura_imagen_blanco_24" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/fondo_redondo_blanco"
+                android:hint="@string/nombre"
+                android:textColorHint="@color/azul_cian"
+                app:boxStrokeColor="@color/azul_cian">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nombreEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fondo_redondo_blanco" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/fondo_redondo_blanco"
+                android:hint="@string/apellidos"
+                android:textColorHint="@color/azul_cian"
+                app:boxStrokeColor="@color/azul_cian">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/apellidosEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fondo_redondo_blanco" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:hint="@string/sufijo"
+                    android:textColorHint="@color/azul_cian"
+                    app:boxStrokeColor="@color/azul_cian">
+
+                    <Spinner
+                        android:id="@+id/fixNumeroSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/fondo_redondo_blanco"
+                        android:entries="@array/sufijos"
+                        android:inputType="number"
+                        android:textAlignment="center" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:hint="@string/numero_de_contacto"
+                    android:textColorHint="@color/azul_cian"
+                    app:boxStrokeColor="@color/azul_cian">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/numeroEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/fondo_redondo_blanco"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/fondo_redondo_blanco"
+                android:hint="@string/direccion"
+                android:textColorHint="@color/azul_cian"
+                app:boxStrokeColor="@color/azul_cian">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/direccionEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fondo_redondo_blanco" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/fondo_redondo_blanco"
+                android:hint="@string/correo_electronico"
+                android:textColorHint="@color/azul_cian"
+                app:boxStrokeColor="@color/azul_cian">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/correoEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/guardarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/fondo_redondo_cian"
+        android:text="@string/guardar"
+        android:fontFamily="@font/abeezee"
+        android:textColor="@color/white"
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

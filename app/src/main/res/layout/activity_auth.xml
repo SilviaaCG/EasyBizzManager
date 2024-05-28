@@ -1,77 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AuthActivity">
+    tools:context=".AuthActivity"
+    android:background="@color/azul_cian">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/logotipoImageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/logo_solo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/autenticacionLayout"
+        />
 
     <LinearLayout
+        android:id="@+id/autenticacionLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <EditText
-            android:id="@+id/emailEditText"
+        app:layout_constraintTop_toBottomOf="@id/logotipoImageView">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/correo"
+            android:layout_margin="5dp"
+            android:textColorHint="@color/azul_oscuro"
+            app:errorEnabled="true"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/cliente"
+           >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/abeezee"
+                android:backgroundTint="@color/white"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="correo electronico"
-            android:inputType="textEmailAddress" />
+            android:hint="@string/contrasena"
+            android:layout_margin="5dp"
+            android:textColorHint="@color/azul_oscuro"
+            app:endIconMode="password_toggle"
+            app:endIconDrawable="@drawable/ojo"
+            app:endIconCheckable="true"
+            app:errorEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordEditTextText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/abeezee"
+                android:inputType="textPassword"
+                android:backgroundTint="@color/white"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/passwordEditTextText"
+
+
+
+
+        <Button
+            android:id="@+id/signInButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="contraseña"
-            android:inputType="textPassword" />
+            android:layout_weight="1"
+            android:text="@string/entrar"
+            android:padding="16dp"
+            android:backgroundTint="@color/azul_oscuro"
+            />
+
+            <TwoLineListItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/separador_o"
+                android:layout_gravity="center_horizontal"/>
+        <Button
+            android:id="@+id/signUpButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/registrar"
+            android:padding="16dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/azul_oscuro"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
-
             <Button
-                android:id="@+id/signUpButton"
+                android:id="@+id/googleButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Registrar" />
+                android:text="Google"
+                android:padding="10dp"
+                android:layout_marginEnd="5dp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/azul_oscuro"
+                android:drawableLeft="@drawable/google"/>
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2" />
-
-            <Button
-                android:id="@+id/signInButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Entrar" />
 
         </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/googleButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="Google"
-            android:textAlignment="textStart" />
-
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+        android:id="@+id/contenedorFragments"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

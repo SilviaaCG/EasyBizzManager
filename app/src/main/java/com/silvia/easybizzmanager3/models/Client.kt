@@ -4,24 +4,21 @@ import java.util.UUID
 
 data class Client(
     val id:String,
-    val image:String,
+    var image:String?,
     val nombre:String,
     val apellidos:String,
-    val number:NumberContact,
-    val direccion:String,
-    val correo:String,
-    val favorito:Boolean){
+    val number:NumberContact?,
+    val direccion:String?,
+    val correo:String?,
+    var favorito:Boolean){
     constructor() : this(
         "0",
+        null,
         "",
         "",
-        "",
-        NumberContact(
-            "+34",
-            0
-        ),
-        "",
-        "",
+        null,
+        null,
+        null,
         false
     )
 }
@@ -29,12 +26,5 @@ fun generarId():String{
     return UUID.randomUUID().toString()
 }
 
-data class NumberContact(
-    val prefix:String,
-    val number:Int) {
-    constructor() : this(
-        "",
-        0
-    )
-}
+
 

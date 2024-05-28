@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/fondo_redondo_blanco2">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/fondo_redondo_blanco"
+        android:hint="@string/metodo_de_pago"
+        android:textColorHint="@color/azul_cian"
+        app:boxStrokeColor="@color/azul_cian">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/metodoPagoEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/fondo_redondo_blanco"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/fondo_redondo_blanco"
+        android:hint="@string/cantidad"
+        android:textColorHint="@color/azul_cian"
+        app:boxStrokeColor="@color/azul_cian">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cantidadEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:inputType="numberDecimal"
+            android:background="@drawable/fondo_redondo_blanco"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/fondo_redondo_blanco"
+        android:hint="@string/fecha_de_pago"
+        android:textColorHint="@color/azul_cian"
+        app:boxStrokeColor="@color/azul_cian">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fechaEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:background="@drawable/fondo_redondo_blanco" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</LinearLayout>

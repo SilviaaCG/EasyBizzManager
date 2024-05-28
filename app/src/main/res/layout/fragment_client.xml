@@ -4,18 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.client.ClientFragment">
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:clickable="true"
-        android:padding="16dp"
-        android:src="@android:drawable/ic_menu_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout" />
+    tools:context=".ui.client.ClientFragment"
+    android:background="@color/blanco_1">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -23,35 +13,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/clientsTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/abeezee"
-            android:padding="16dp"
-            android:text="Clientes"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-
-
         <SearchView
             android:id="@+id/buscadorClientes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
+            android:layout_margin="10dp"
             android:fontFamily="@font/abeezee"
             android:text="Buscar"
+            android:background="@drawable/fondo_redondo_blanco"
+            android:searchIcon="@drawable/buscar_24"
             />
-
-        <TextView
-            android:id="@+id/favClientsTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/abeezee"
-            android:paddingStart="10dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="10dp"
-            android:text="Favoritos" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/clientsRecyclerView"
@@ -61,9 +33,18 @@
             android:paddingEnd="10dp"
             android:scrollbarSize="5dp"
             tools:listitem="@layout/item_client_list">
-
         </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/agregarClienteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:fab_addButtonColorPressed="@color/azul_oscuro"
+        app:fab_colorNormal="@color/azul_cian"
+        app:fab_icon="@drawable/add_cliente_blanco"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

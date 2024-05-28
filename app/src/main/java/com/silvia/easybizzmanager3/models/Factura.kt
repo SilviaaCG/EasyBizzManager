@@ -1,35 +1,38 @@
 package com.silvia.easybizzmanager3.models
 
+import java.io.Serializable
 import java.sql.Timestamp
 
-data class Factura(
+data class Factura (
     val numeroFactura: String,
     val fechaEmision: String,
-    val vendedor: String,
-    val comprador: Client,
-    val direccionVendedor: String?,
-    val direccionComprador: String?,
+    val fechaValidez:String?,
+    val detallesPerfil:DetallesPerfil,
+    var comprador: Client,
     val importeTotal: Double,
-    val impuestos: Double,
-    val metodoPago: String?,
+    val impuestos: Int?,
+    val descuento: Int?,
+    var pagos:ArrayList<Pago>?,
     val informacionAdicional: String?,
-    val productos: List<Producto>?,
-    val servicios:List<Servicio>?,
-    val descuento: Double?
+    var serviciosProductos: ArrayList<Item>?,
+    var estado:EstadoFactura
+
 ){
+    enum class EstadoFactura { SIN_ESTADO, PENDIENTE, PAGO_PARCIAL, RETRASO, PAGADO }
+
+
     constructor() : this(
         "",
         "",
-        "",
+        null,
+        DetallesPerfil(),
         Client(),
-        "",
-        "",
         0.0,
-        0.0,
+        0,
+        null,
+        ArrayList(),
         "",
-        null,
-        null,
-        null,
-        null
+        ArrayList(),
+        EstadoFactura.SIN_ESTADO
     )
 }

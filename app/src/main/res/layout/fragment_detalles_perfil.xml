@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.ajustes.DetallesPerfilFragment"
+    android:background="@color/azul_cian">
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"> <TextView
+        android:id="@+id/tituloTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/datosLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/edita_tu_perfil"
+        android:textColor="@color/white"
+        android:fontFamily="@font/abeezee"
+        android:textSize="40sp"
+        android:padding="16dp"
+        android:textStyle="bold"
+        />
+    <LinearLayout
+        android:id="@id/datosLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tituloTextView"
+        app:layout_constraintBottom_toTopOf="@id/siguienteButton"
+        android:orientation="vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        >
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/fondo_redondo_blanco"
+            android:hint="@string/nombre"
+            android:textColorHint="@color/azul_cian"
+            app:boxStrokeColor="@color/azul_cian">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nombreEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/fondo_redondo_blanco" />
+        </com.google.android.material.textfield.TextInputLayout>
+<com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/fondo_redondo_blanco"
+            android:hint="@string/apellidos"
+            android:textColorHint="@color/azul_cian"
+            app:boxStrokeColor="@color/azul_cian">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/apellidosEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/fondo_redondo_blanco" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/fondo_redondo_blanco"
+            android:hint="@string/nombre_de_empresa"
+            android:textColorHint="@color/azul_cian"
+            app:boxStrokeColor="@color/azul_cian">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nombreEmpresaEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/fondo_redondo_blanco" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/fondo_redondo_blanco"
+            android:hint="@string/numero_de_empresa"
+            android:textColorHint="@color/azul_cian"
+            app:boxStrokeColor="@color/azul_cian">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/numeroEmpresaEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/fondo_redondo_blanco" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/fondo_redondo_blanco"
+                android:hint="@string/sufijo"
+                android:textColorHint="@color/azul_cian"
+                app:boxStrokeColor="@color/azul_cian">
+
+                <Spinner
+                    android:id="@+id/fixSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:textAlignment="center"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:inputType="number"
+                    android:entries="@array/sufijos"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/fondo_redondo_blanco"
+                android:hint="@string/numero_de_contacto"
+                android:textColorHint="@color/azul_cian"
+                app:boxStrokeColor="@color/azul_cian">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/numeroContactoEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/fondo_redondo_blanco"
+            android:hint="@string/correo_electronico"
+            android:textColorHint="@color/azul_cian"
+            app:boxStrokeColor="@color/azul_cian">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/correoEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:inputType="textEmailAddress"
+                android:background="@drawable/fondo_redondo_blanco" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/fondo_redondo_blanco"
+            android:hint="@string/correo_de_contacto"
+            android:textColorHint="@color/azul_cian"
+            app:boxStrokeColor="@color/azul_cian">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/correoContactoEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:inputType="textEmailAddress"
+                android:background="@drawable/fondo_redondo_blanco" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/fondo_redondo_blanco"
+            android:hint="@string/ubicacion"
+            android:textColorHint="@color/azul_cian"
+            app:boxStrokeColor="@color/azul_cian">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ubicacionEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/fondo_redondo_blanco" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/siguienteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:drawableEnd="@drawable/flecha"
+        android:text="@string/guardar"
+        android:textColor="@color/azul_oscuro"
+        android:backgroundTint="@color/white"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>

@@ -1,40 +1,50 @@
 package com.silvia.easybizzmanager3
-
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.core.content.ContextCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.facebook.AccessToken
+import com.facebook.CallbackManager
+import com.facebook.CallbackManager.Factory.create
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.FacebookSdk
+import com.facebook.Profile
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
+import com.facebook.login.widget.LoginButton
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.Scopes
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.Scope
 import com.google.firebase.FirebaseApp
 import com.google.firebase.appcheck.FirebaseAppCheck
+import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.ktx.initialize
 import com.silvia.easybizzmanager3.databinding.ActivityAuthBinding
-import com.silvia.easybizzmanager3.databinding.ActivityMainBinding
+import com.silvia.easybizzmanager3.ui.ajustes.DetallesPerfilFragment
+import java.util.Arrays
+
 
 class AuthActivity : AppCompatActivity() {
 
-    /**
-     * IDEA
-     * - Mostrar en auth fragments del registro para guardar los datos
-     */
 
     private lateinit var binding: ActivityAuthBinding
     companion object {
@@ -45,24 +55,30 @@ class AuthActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     lateinit var email : EditText
     lateinit var passw : EditText
+    lateinit var callbackManager:CallbackManager
     override fun onCreate(savedInstanceState: Bundle?) {
+        val screenSplash = installSplashScreen()
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_auth)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        screenSplash.setKeepOnScreenCondition{false}
+
+        callbackManager = CallbackManager.Factory.create()
 
         // Configurar opciones de inicio de sesión de Google
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id)) // Obtener el ID del cliente web desde el archivo de recursos
             .requestEmail()
+            .requestScopes(Scope("https://www.googleapis.com/auth/userinfo.profile"))
             .build()
+        // Cambiar el color de la barra de estado
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.azul_cian)
+        }
+        //Esconder barra
+        supportActionBar?.hide()
 
         binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         // Firebase AppCheck
         FirebaseApp.initializeApp(this)
@@ -72,11 +88,7 @@ class AuthActivity : AppCompatActivity() {
         email = binding.emailEditText
         passw = binding.passwordEditTextText
 
-
-        title = "Autenticación"
-
         // Botones
-
         binding.signUpButton.setOnClickListener{
             // Registrar
             registraUsuario()
@@ -87,19 +99,48 @@ class AuthActivity : AppCompatActivity() {
             iniciarSesionUsuario()
         }
 
+
         binding.googleButton.setOnClickListener{
-            val signInIntent = GoogleSignIn.getClient(this, gso).signInIntent
-            startActivityForResult(signInIntent, RC_SIGN_IN)
+
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
+            val googleSignInClient = GoogleSignIn.getClient(this, gso)
+            googleSignInClient.signOut() // Esto cierra la sesión actual de Google
+                .addOnCompleteListener {
+                    val signInIntent = googleSignInClient.signInIntent
+                    startActivityForResult(signInIntent, RC_SIGN_IN)
+                }
+
         }
     }
+
+
+
+
+
+
+
+    private fun updateUI(user: FirebaseUser?) {
+        if (user != null) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        } else {
+            Toast.makeText(this,"El usuario no existe", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 // Obtener la cuenta de Google
                 val account = task.getResult(ApiException::class.java)
+
                 // Autenticar con Firebase
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
@@ -107,20 +148,30 @@ class AuthActivity : AppCompatActivity() {
                 Toast.makeText(this, "Google sign in failed", Toast.LENGTH_SHORT).show()
             }
         }
+        // Pasar el resultado de la actividad al SDK de Facebook
+        callbackManager.onActivityResult(requestCode, resultCode, data)
     }
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    val isNewUser = task.result?.additionalUserInfo?.isNewUser ?: false
+                    if (isNewUser) {
+                        // El usuario es nuevo, mostrar el fragmento de registro
+                        showRegistro()
+                    } else {
+                        // El usuario ya está registrado, mostrar la pantalla principal
+                        showHome()
+                    }
                     // Registro exitoso
                     val user = auth.currentUser
-                    // Continuar con la lógica de tu aplicación después del registro
-                    showHome()
+
+
                 } else {
                     // Registro fallido
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
-                    Toast.makeText(this, "Authentication failed", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Error al iniciar sesión.", Toast.LENGTH_SHORT).show()
                 }
             }
     }
@@ -165,7 +216,7 @@ class AuthActivity : AppCompatActivity() {
                 auth.createUserWithEmailAndPassword(email.text.toString(), passw.text.toString())
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
-                            showHome()
+                            showRegistro()
                         } else if(passw.length() < 6){
                             Log.w(ContentValues.TAG, "createUserWithEmail:failure", it.exception)
                             Toast.makeText(
@@ -185,7 +236,6 @@ class AuthActivity : AppCompatActivity() {
             } else {
                 showAlert("Error", "Se ha producido un error de autenticación al usuario")
             }
-
     }
 
     private fun showAlert(title: String, mensaje: String) {
@@ -201,9 +251,17 @@ class AuthActivity : AppCompatActivity() {
         val homeIntent = Intent(this, MainActivity::class.java)
         startActivity(homeIntent)
     }
+    private fun showRegistro(){
+        // Crear una instancia del fragmento
+        val fragment = DetallesPerfilFragment()
+        // Iniciar una transacción para agregar el fragmento al contenedor
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.contenedorFragments, fragment)
+        transaction.commit()
+    }
 
     private fun appCheck() {
-        //FirebaseAppCheck.getInstance().installAppCheckProviderFactory( PlayIntegrityAppCheckProviderFactory.getInstance())
+        FirebaseAppCheck.getInstance().installAppCheckProviderFactory( PlayIntegrityAppCheckProviderFactory.getInstance())
     }
 
     // Desactivar botón de andriod de return
@@ -211,4 +269,5 @@ class AuthActivity : AppCompatActivity() {
     override fun onBackPressed() {
         moveTaskToBack(true)
     }
+
 }

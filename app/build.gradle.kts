@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.silvia.easybizzmanager3"
-        minSdk = 22
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -43,7 +43,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -56,6 +55,8 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.appcheck.ktx)
     implementation(libs.play.services.cast.framework)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.car.ui.lib)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -68,6 +69,8 @@ dependencies {
 
     // Firebase Authentication Google
     implementation("com.google.android.gms:play-services-auth:20.6.0")
+    //Firebase Authentication Facebook
+    implementation ("com.facebook.android:facebook-android-sdk:[8,9)")
 
     // Firebase Appcheck playIntegrity
     implementation("com.google.firebase:firebase-appcheck-playintegrity")
@@ -81,6 +84,24 @@ dependencies {
     implementation ("com.github.dhaval2404:imagepicker:2.1")
     implementation ("androidx.activity:activity-ktx:1.2.3")
     implementation ("androidx.fragment:fragment-ktx:1.3.3")
+
+    // Fabs Buttons
+    implementation("com.getbase:floatingactionbutton:1.10.1")
+
+    // Material design
+    implementation("com.google.android.material:material:1.1.0-alpha06")
+
+    //PDF
+    implementation ("com.github.barteksc:android-pdf-viewer:2.8.2")
+    implementation ("com.github.barteksc:android-pdf-viewer:3.2.0-beta.1")
+    implementation ("com.itextpdf:itext7-core:7.2.3")
+
+    implementation("io.github.afreakyelf:Pdf-Viewer:2.1.1")
+
+    //Splash screen
+    implementation ("androidx.core:core-splashscreen:1.0.0-beta02")
+
+
 
 
 

@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.factura.EditarFacturaFragment"
+    android:background="@color/blanco_1">
+
+
+    <androidx.core.widget.NestedScrollView
+            android:id="@+id/datosScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guardarButton"
+            app:layout_constraintTop_toTopOf="parent"
+            android:fillViewport="true"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:id="@+id/precioLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:text="@string/subtotal"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:id="@+id/subtotalTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="5dp"
+                            android:padding="10dp"
+                            android:text="@string/precio"
+                            android:textSize="16sp"
+                            app:drawableEndCompat="@drawable/euro_16" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:text="@string/impuestos"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/precioImpuestosTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="5dp"
+                            android:padding="10dp"
+                            android:text="@string/precio"
+                            android:textSize="16sp"
+                            app:drawableEndCompat="@drawable/euro_16" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:text="@string/descuento"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:id="@+id/descuentoTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="5dp"
+                            android:padding="10dp"
+                            android:text="@string/precio"
+                            android:textSize="16sp"
+                            app:drawableEndCompat="@drawable/euro_16" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:text="@string/importe_total"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/precioTotalTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="5dp"
+                            android:padding="10dp"
+                            android:text="@string/precio"
+                            android:textSize="20sp"
+                            app:drawableEndCompat="@drawable/euro" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:orientation="horizontal"
+                    >
+                    <LinearLayout
+                        android:id="@+id/selectorCliente"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground">
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/clientImageView"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:background="@drawable/imagen_perfil"
+                            android:padding="3dp"
+                            android:scaleType="centerInside"
+                            app:srcCompat="@drawable/cliente" />
+                        <AutoCompleteTextView
+                            android:id="@+id/itemClientNombreTextView"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/abeezee"
+                            android:layout_marginStart="10dp"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/nombre"
+                            android:textSize="16sp"
+                            tools:ignore="RtlCompat" />
+
+                    </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/agregarClienteButton"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/fondo_redondo_cian"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/add_cliente_blanco" />
+                </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:hint="@string/nombre_de_empresa"
+                    android:textColorHint="@color/azul_cian"
+                    app:boxStrokeColor="@color/azul_cian">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nombreEmpresaEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/fondo_redondo_blanco" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:hint="@string/numero_de_empresa"
+                    android:textColorHint="@color/azul_cian"
+                    app:boxStrokeColor="@color/azul_cian">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/numeroEmpresaEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/fondo_redondo_blanco" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/fondo_redondo_blanco"
+                        android:hint="@string/sufijo"
+                        android:textColorHint="@color/azul_cian"
+                        app:boxStrokeColor="@color/azul_cian">
+
+                        <Spinner
+                            android:id="@+id/fixSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:textAlignment="center"
+                            android:background="@drawable/fondo_redondo_blanco"
+                            android:inputType="number"
+                            android:entries="@array/sufijos"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/fondo_redondo_blanco"
+                        android:hint="@string/numero_de_contacto"
+                        android:textColorHint="@color/azul_cian"
+                        app:boxStrokeColor="@color/azul_cian">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/numeroContactoEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/fondo_redondo_blanco"
+                            android:inputType="number" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:hint="@string/correo_electronico"
+                    android:textColorHint="@color/azul_cian"
+                    app:boxStrokeColor="@color/azul_cian">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/correoEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:inputType="textEmailAddress"
+                        android:background="@drawable/fondo_redondo_blanco" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:hint="@string/ubicacion"
+                    android:textColorHint="@color/azul_cian"
+                    app:boxStrokeColor="@color/azul_cian">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ubicacionEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/fondo_redondo_blanco" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:hint="@string/impuestos"
+                    android:textColorHint="@color/azul_cian"
+                    app:boxStrokeColor="@color/azul_cian">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/impuestosEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:inputType="number"
+                        android:background="@drawable/fondo_redondo_blanco" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:hint="@string/descuento"
+                    android:textColorHint="@color/azul_cian"
+                    app:boxStrokeColor="@color/azul_cian">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/descuentoEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:inputType="number"
+                        android:background="@drawable/fondo_redondo_blanco" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:hint="@string/fecha_de_vencimiento"
+                    android:textColorHint="@color/azul_cian"
+                    app:boxStrokeColor="@color/azul_cian">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fechaVencimientoEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:background="@drawable/fondo_redondo_blanco" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:hint="@string/info_adicional"
+                    android:textColorHint="@color/azul_cian"
+                    app:boxStrokeColor="@color/azul_cian">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/infoAdicionalFacturaEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/fondo_redondo_blanco" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:orientation="horizontal">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/selectorItemsTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/abeezee"
+                        android:layout_marginStart="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/nombre"
+                        android:textSize="16sp"
+                        tools:ignore="RtlCompat" />
+
+                    <ImageButton
+                        android:id="@+id/agregarProductoServicioButton"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/fondo_redondo_cian"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/add_servicio_producto_blanco" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/productosServiciosRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/fondo_redondo_blanco"
+                    android:padding="10dp"
+                    tools:listitem="@layout/item_producto_servicio_list"/>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/guardarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/fondo_redondo_cian"
+        android:text="@string/guardar"
+        android:fontFamily="@font/abeezee"
+        android:textColor="@color/white"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

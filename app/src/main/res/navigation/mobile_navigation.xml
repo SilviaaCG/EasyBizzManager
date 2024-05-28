@@ -5,47 +5,104 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_home">
 
+    <action android:id="@+id/action_editarItemsFragment"
+        app:popUpTo="@id/editarItemsFragment"
+        app:popUpToInclusive="true" />
+    <action android:id="@+id/action_contenedorItemsFragment"
+        app:popUpTo="@id/contenedorServiciosProductosFragment"
+        app:popUpToInclusive="true" />
+
+
     <fragment
         android:id="@+id/nav_home"
         android:name="com.silvia.easybizzmanager3.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:label="Inicio"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_infoClientFragment"
+            app:destination="@id/infoClientFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_infoFacturaFragment"
+            app:destination="@id/infoFacturaFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_contenedorFacturaFragment"
+            app:destination="@id/contenedorFacturaFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_editarFacturaFragment"
+            app:destination="@id/editarFacturaFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_clientes"
+            app:destination="@id/nav_clientes" />
+        <action
+            android:id="@+id/action_nav_home_to_detallesPerfilFragment"
+            app:destination="@id/detallesPerfilFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_editarClientFragment"
+            app:destination="@id/editarClientFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_editarItemsFragment"
+            app:destination="@id/editarItemsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_clientes"
         android:name="com.silvia.easybizzmanager3.ui.client.ClientFragment"
-        android:label="@string/menu_gallery"
+        android:label="Clientes"
         tools:layout="@layout/fragment_client">
         <action
             android:id="@+id/action_nav_clientes_to_infoClientFragment"
             app:destination="@id/infoClientFragment" />
+        <action
+            android:id="@+id/action_nav_clientes_to_nav_home"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_nav_clientes_to_editarClientFragment"
+            app:destination="@id/editarClientFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_facturas"
-        android:name="com.silvia.easybizzmanager3.ui.slideshow.FacturaFragment"
-        android:label="@string/menu_slideshow"
+        android:name="com.silvia.easybizzmanager3.ui.factura.FacturaFragment"
+        android:label="Facturas"
         tools:layout="@layout/fragment_factura">
         <action
             android:id="@+id/action_nav_facturas_to_infoFacturaFragment"
             app:destination="@id/infoFacturaFragment" />
+        <action
+            android:id="@+id/action_nav_facturas_to_contenedorFacturaFragment"
+            app:destination="@id/contenedorFacturaFragment" />
+        <action
+            android:id="@+id/action_nav_facturas_to_editarFacturaFragment"
+            app:destination="@id/editarFacturaFragment" />
+        <action
+            android:id="@+id/action_nav_facturas_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
     <fragment
         android:id="@+id/infoClientFragment"
         android:name="com.silvia.easybizzmanager3.ui.client.InfoClientFragment"
-        android:label="fragment_info_client"
+        android:label="Cliente"
         tools:layout="@layout/fragment_info_client">
         <action
             android:id="@+id/action_infoClientFragment_to_nav_clientes"
             app:destination="@id/nav_clientes"/>
         <action
-            android:id="@+id/action_infoClientFragment_to_infoFacturaFragment"
-            app:destination="@id/infoFacturaFragment" />
+            android:id="@+id/action_infoClientFragment_to_contenedorFacturaFragment"
+            app:destination="@id/contenedorFacturaFragment" />
+        <action
+            android:id="@+id/action_infoClientFragment_to_editarClientFragment"
+            app:destination="@id/editarClientFragment" />
+        <action
+            android:id="@+id/action_infoClientFragment_to_nav_clientes2"
+            app:destination="@id/nav_clientes" />
+        <action
+            android:id="@+id/action_infoClientFragment_to_nav_clientes3"
+            app:destination="@id/nav_clientes" />
     </fragment>
     <fragment
         android:id="@+id/infoFacturaFragment"
-        android:name="com.silvia.easybizzmanager3.ui.slideshow.InfoFacturaFragment"
-        android:label="fragment_info_factura"
+        android:name="com.silvia.easybizzmanager3.ui.factura.InfoFacturaFragment"
+        android:label="Factura"
         tools:layout="@layout/fragment_info_factura" >
         <action
             android:id="@+id/action_infoFacturaFragment_to_nav_facturas"
@@ -53,5 +110,106 @@
         <action
             android:id="@+id/action_infoFacturaFragment_to_infoClientFragment"
             app:destination="@id/infoClientFragment" />
+        <action
+            android:id="@+id/action_infoFacturaFragment_to_editarFacturaFragment"
+            app:destination="@id/editarFacturaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_productos_servicios"
+        android:name="com.silvia.easybizzmanager3.ui.productos_servicios.ProductosFragment"
+        android:label="Servicios y Productos"
+        tools:layout="@layout/fragment_productos" >
+        <action
+            android:id="@+id/action_nav_productos_servicios_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/facturaPDFFragment"
+        android:name="com.silvia.easybizzmanager3.ui.factura.FacturaPDFFragment"
+        android:label="fragment_factura_p_d_f"
+        tools:layout="@layout/fragment_factura_p_d_f" />
+    <fragment
+        android:id="@+id/contenedorFacturaFragment"
+        android:name="com.silvia.easybizzmanager3.ui.factura.ContenedorFacturaFragment"
+        android:label="fragment_contenedor_factura"
+        tools:layout="@layout/fragment_contenedor_factura" >
+        <action
+            android:id="@+id/action_contenedorFacturaFragment_to_nav_facturas"
+            app:destination="@id/nav_facturas" />
+        <action
+            android:id="@+id/action_contenedorFacturaFragment_to_editarFacturaFragment"
+            app:destination="@id/editarFacturaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarFacturaFragment"
+        android:name="com.silvia.easybizzmanager3.ui.factura.EditarFacturaFragment"
+        android:label="fragment_editar_factura"
+        tools:layout="@layout/fragment_editar_factura" >
+        <action
+            android:id="@+id/action_editarFacturaFragment_to_infoFacturaFragment"
+            app:destination="@id/infoFacturaFragment" />
+        <action
+            android:id="@+id/action_editarFacturaFragment_to_nav_facturas"
+            app:destination="@id/nav_facturas" />
+        <action
+            android:id="@+id/action_editarFacturaFragment_to_contenedorFacturaFragment"
+            app:destination="@id/contenedorFacturaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarClientFragment"
+        android:name="com.silvia.easybizzmanager3.ui.client.EditarClientFragment"
+        android:label="fragment_editar_client"
+        tools:layout="@layout/fragment_editar_client" >
+        <action
+            android:id="@+id/action_editarClientFragment_to_infoClientFragment"
+            app:destination="@id/infoClientFragment" />
+        <action
+            android:id="@+id/action_editarClientFragment_to_nav_clientes"
+            app:destination="@id/nav_clientes" />
+    </fragment>
+    <fragment
+        android:id="@+id/detallesPerfilFragment"
+        android:name="com.silvia.easybizzmanager3.ui.ajustes.DetallesPerfilFragment"
+        android:label="fragment_detalles_perfil"
+        tools:layout="@layout/fragment_detalles_perfil" >
+        <action
+            android:id="@+id/action_detallesPerfilFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/contenedorServiciosProductosFragment"
+        android:name="com.silvia.easybizzmanager3.ui.productos_servicios.contenedorServiciosProductosFragment"
+        android:label="fragment_contenedor_servicios_productos"
+        tools:layout="@layout/fragment_contenedor_servicios_productos" >
+        <action
+            android:id="@+id/action_contenedorServiciosProductosFragment_to_editarItemsFragment"
+            app:destination="@id/editarItemsFragment" />
+        <action
+            android:id="@+id/action_contenedorServiciosProductosFragment_to_infoProductosYServiciosFragment"
+            app:destination="@id/infoProductosYServiciosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarItemsFragment"
+        android:name="com.silvia.easybizzmanager3.ui.productos_servicios.EditarItemsFragment"
+        android:label="fragment_editar_items"
+        tools:layout="@layout/fragment_editar_items" >
+        <action
+            android:id="@+id/action_editarItemsFragment_to_contenedorServiciosProductosFragment"
+            app:destination="@id/contenedorServiciosProductosFragment" />
+        <action
+            android:id="@+id/action_editarItemsFragment_to_infoProductosYServiciosFragment"
+            app:destination="@id/infoProductosYServiciosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoProductosYServiciosFragment"
+        android:name="com.silvia.easybizzmanager3.ui.productos_servicios.infoProductosYServiciosFragment"
+        android:label="fragment_info_productos_y_servicios"
+        tools:layout="@layout/fragment_info_productos_y_servicios" >
+        <action
+            android:id="@+id/action_infoProductosYServiciosFragment_to_editarItemsFragment"
+            app:destination="@id/editarItemsFragment" />
+        <action
+            android:id="@+id/action_infoProductosYServiciosFragment_to_contenedorServiciosProductosFragment"
+            app:destination="@id/contenedorServiciosProductosFragment" />
     </fragment>
 </navigation>

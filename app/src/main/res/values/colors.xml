@@ -8,4 +8,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparente_gris">#80CCCCCC</color>
+    <color name="rosa">#ff66c4</color>
+    <color name="azul">#5170ff</color>
+    <color name="lila">#cb6ce6</color>
+    <color name="azul_cian">#61C5FE</color>
+    <color name="azul_oscuro">#044E6E</color>
+    <color name="blanco_1">#F3F4F9</color>
+    <color name="rojo">#FF1100</color>
+    <color name="rojo_transparente">#C60225</color>
+
 </resources>

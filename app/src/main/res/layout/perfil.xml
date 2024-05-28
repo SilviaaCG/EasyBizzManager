@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/perfilImageView"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:background="@drawable/imagen_perfil"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/ic_persona" />
+    <TextView
+        android:id="@+id/perfilNombreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/perfilImageView"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="Nombre usuario"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/perfilImageView"
+        android:fontFamily="@font/abeezee"
+
+        />
+
+</RelativeLayout>
